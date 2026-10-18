@@ -3,10 +3,10 @@ import path from "node:path";
 import type { NextConfig } from "next";
 
 const allowedDevOrigins = [
-  "100.73.39.93",
-  "100.73.39.93:3000",
   "*.ts.net",
-  ...(process.env.ALLOWED_DEV_ORIGINS ? process.env.ALLOWED_DEV_ORIGINS.split(",").map((s) => s.trim()) : []),
+  ...(process.env.ALLOWED_DEV_ORIGINS
+    ? process.env.ALLOWED_DEV_ORIGINS.split(",").map((s) => s.trim()).filter(Boolean)
+    : []),
 ];
 
 const nextConfig: NextConfig = {
